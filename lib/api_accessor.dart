@@ -18,4 +18,11 @@ class ApiAccessor {
       return "Wrong credentials";
     }
   }
+
+  static Future<dynamic> requestFoods() async {
+    Uri url = Uri.http("10.0.2.2:4000", "/api/public/foods");
+
+    http.Response response = await http.get(url);
+    return const JsonDecoder().convert(response.body);
+  }
 }
